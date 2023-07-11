@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
+'''
+    The basics of async.
+'''
 
 import asyncio
 import random
 
-async def wait_random(max_delay=10):
+
+async def wait_random(max_delay: int = 10) -> float:
+    """
+    waits for a random delay between 0 and max_delay (included and float value)
+    seconds and eventually returns it.
+    """
     delay = random.uniform(0, max_delay)
     await asyncio.sleep(delay)
     return delay
-async def main():
-    delay = await wait_random()
-    print(f"The random delay is: {delay} seconds")
-
-# Create an event loop and run the main coroutine
-loop = asyncio.get_event_loop()
-loop.run_until_complete(main())
